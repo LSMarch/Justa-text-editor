@@ -49,7 +49,7 @@ module.exports = () => {
       new WorkboxPlugin.GenerateSW({
         exclude: [/\.(?:png|jpg|jpeg|svg)$/],
         runtimeCaching: [{
-          urlPatter: /\.(?:png|jpg|jpeg|svg)$/,
+          urlPattern: /\.(?:png|jpg|jpeg|svg)$/,
           handler: 'CacheFirst',
           options: {
             cacheName:'images',
