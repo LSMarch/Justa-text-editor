@@ -2,7 +2,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
 const path = require('path');
 const { InjectManifest } = require('workbox-webpack-plugin');
-const WorkboxPlugin = require('workbox-webpack-plugin')
+const WorkboxPlugin = require('workbox-webpack-plugin');
 
 // TODO: Add and configure workbox plugins for a service worker and manifest file.
 // TODO: Add CSS loaders and babel to webpack.
@@ -13,7 +13,7 @@ module.exports = () => {
     entry: {
       main: './src/js/index.js',
       install: './src/js/install.js',
-      //editor: './src/js/editor.js'
+      
     },
     output: {
       filename: '[name].bundle.js',
@@ -21,9 +21,9 @@ module.exports = () => {
     },
     plugins: [
       new HtmlWebpackPlugin({
-        template: './index.html',
+        template: './index.html',        
         title: 'JATE'
-      }),
+      }),      
       new WebpackPwaManifest({
         finterprints: 'false',
         inject: true,
@@ -47,7 +47,7 @@ module.exports = () => {
         swDest: 'src-sw.js'
       }),
       new WorkboxPlugin.GenerateSW({
-        exclude: [/\.(?:png|jpg|jpeg|svg)$/],
+        exclude: [/\.(?:png|jpg|jpeg|svg|)$/],
         runtimeCaching: [{
           urlPattern: /\.(?:png|jpg|jpeg|svg)$/,
           handler: 'CacheFirst',
@@ -71,8 +71,7 @@ module.exports = () => {
         {
           test: /\.(png|svg|jpg|jpeg|gif)$/i,
           type: 'asset/resource',
-        },
-        // Ignore node_modules??
+        },        
         {
           test: /\.m?js$/,
           exclude: /node_modules/,
